@@ -62,6 +62,7 @@
     isNormalUser = true;
     description = "Void";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Set your time zone.

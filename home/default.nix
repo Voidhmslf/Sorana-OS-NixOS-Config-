@@ -14,8 +14,6 @@
 
   # --- Новая конфигурация для Zsh и интерактивных утилит ---
 
-  # Устанавливаем Zsh как оболочку по умолчанию
-  users.defaultUserShell = pkgs.zsh;
 
   # Включаем fzf (fuzzy finder) и его интеграцию с zsh
   programs.fzf = {
