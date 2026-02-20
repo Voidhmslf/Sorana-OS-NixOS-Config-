@@ -6,35 +6,66 @@
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
 
+  # Пакеты, которые мы устанавливаем для пользователя
+  home.packages = with pkgs; [
+    pavucontrol # Утилита для управления громкостью (для клика по виджету)
+    network-manager-applet # Утилита для управления Wi-Fi (для клика по виджету)
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) # Шрифты с иконками
+  ];
+
   # Импортируем остальные части конфигурации
   imports = [
     ./programs/default.nix
     ./terminal/kitty.nix
+    ./desktop/waybar/default.nix # <-- Наш новый Waybar!
   ];
 
-  # --- Новая конфигурация для Zsh и интерактивных утилит ---
+  # --- Конфигурация Rofi (меню приложений) ---
+  programs.rofi = {
+    enable = true;
+    # Тема в моих цветах, чтобы всё было гармонично
+    theme = pkgs.lib.mkOptionDefault {
+      "*" = {
+        background-color: "#090a14";
+        text-color: "#e0d4d4";
+        accent-color: "#00bfa5";
+      };
+      "window" = {
+        border: 2;
+        border-color: "@accent-color";
+        width: "50%";
+      };
+      "listview" = {
+        lines: 8;
+        columns: 1;
+      };
+      "element-text" = {
+        padding: "8px";
+        vertical-align: 0.5;
+      };
+      "element selected" = {
+        background-color: "@accent-color";
+        text-color: "@background-color";
+      };
+    };
+  };
 
-
-  # Включаем fzf (fuzzy finder) и его интеграцию с zsh
+  # --- Конфигурация для Zsh и интерактивных утилит ---
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
 
-  # Настраиваем Zsh
   programs.zsh = {
     enable = true;
-    # Включаем Oh My Zsh для плагинов и тем
     oh-my-zsh = {
       enable = true;
-      # Устанавливаем тему (robbyrussell - стандартная и чистая, хорошо для начала)
       theme = "robbyrussell";
-      # Добавляем плагины для улучшения опыта
       plugins = [
-        "git"                     # Полезные сокращения для Git
-        "fzf"                     # Интеграция с fzf (Ctrl+R для истории)
-        "zsh-autosuggestions"     # Предложения команд на лету
-        "zsh-syntax-highlighting" # Подсветка синтаксиса вводимых команд
+        "git"
+        "fzf"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
       ];
     };
   };
