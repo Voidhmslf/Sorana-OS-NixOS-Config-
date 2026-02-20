@@ -40,7 +40,7 @@
       };
       "element-text" = {
         "padding" = "8px";
-        "vertical-align" = 0.5;
+        "vertical-align" = "0.5";
       };
       "element selected" = {
         "background-color" = "@accent-color";
