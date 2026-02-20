@@ -9,7 +9,7 @@
   # Пакеты, которые мы устанавливаем для пользователя
   home.packages = with pkgs; [
     pavucontrol # Утилита для управления громкостью (для клика по виджету)
-    network-manager-applet # Утилита для управления Wi-Fi (для клика по виджету)
+    networkmanagerapplet # Утилита для управления Wi-Fi (для клика по виджету)
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) # Шрифты с иконками
   ];
 
