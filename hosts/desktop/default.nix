@@ -11,6 +11,9 @@
       ../../modules/hyprland/default.nix
     ];
 
+  # Включаем Zsh на уровне системы, чтобы оболочка работала корректно
+  programs.zsh.enable = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -166,4 +169,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
