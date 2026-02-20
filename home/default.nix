@@ -24,28 +24,28 @@
   programs.rofi = {
     enable = true;
     # Тема в моих цветах, чтобы всё было гармонично
-    theme = pkgs.lib.mkOptionDefault {
+    theme = {
       "*" = {
-        background-color: "#090a14";
-        text-color: "#e0d4d4";
-        accent-color: "#00bfa5";
+        "background-color" = "#090a14";
+        "text-color" = "#e0d4d4";
+        "accent-color" = "#00bfa5";
       };
       "window" = {
-        border: 2;
-        border-color: "@accent-color";
-        width: "50%";
+        "border" = 2;
+        "border-color" = "@accent-color";
+        "width" = "50%";
       };
       "listview" = {
-        lines: 8;
-        columns: 1;
+        "lines" = 8;
+        "columns" = 1;
       };
       "element-text" = {
-        padding: "8px";
-        vertical-align: 0.5;
+        "padding" = "8px";
+        "vertical-align" = 0.5;
       };
       "element selected" = {
-        background-color: "@accent-color";
-        text-color: "@background-color";
+        "background-color" = "@accent-color";
+        "text-color" = "@background-color";
       };
     };
   };
