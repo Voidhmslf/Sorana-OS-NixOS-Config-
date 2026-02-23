@@ -26,7 +26,7 @@ It follows a "Brick-by-Brick" philosophy, ensuring that every system component i
 - ⛩️ **Full Modularity:** System core is split into logical units (boot, network, nvidia, etc.).
 - 🍃 **Hyprland Enchantment:** A smooth Wayland experience with custom emerald-themed styling.
 - 💠 **Portable Heart:** Hardware-specific settings are decoupled from the main logic for easy migration.
-- 🧪 **EasyEDA Module:** Ready-to-use environment for PCB design via `steam-run`.
+- 🧪 **EasyEDA Integration:** Ready-to-use environment for PCB design via `steam-run`.
 - 🍵 **Carefully Curated:** Custom scripts for layout switching, wallpaper management, and system fetch.
 - 🗡️ **Security First:** Hardened Zsh setup and SSH-key oriented workflow.
 
@@ -46,7 +46,10 @@ sorana-os/
 │   ├── 🎨 desktop/         # UI assets, Wallpapers, and Waybar
 │   ├── 🐚 terminal/        # Kitty and Zsh settings
 │   └── 📦 programs/        # Applications & Tools (EasyEDA, Gemini)
-└── 🚀 setup.sh             # Our magical installation script
+├── 📂 scripts/             # Automated installation scrolls 📜
+│   ├── 💠 install-new.sh   # For UEFI/GPT/NVIDIA/rEFInd
+│   └── 🍃 install-old.sh   # For BIOS/MBR/Legacy systems
+└── 🚀 setup.sh             # Main setup helper for existing systems
 ```
 
 ---
@@ -59,17 +62,25 @@ git clone git@github.com:Voidhmslf/Sorana-OS-NixOS-Config-.git ~/sorana-os
 cd ~/sorana-os
 ```
 
-### 2. Invoke the Setup Spirit 🦊
-We have a custom script to prepare your hardware configuration:
+### 2. Invoke the Installation Spirit 🦊
+Depending on your hardware, choose your ritual:
+
+**For Modern Systems (UEFI/NVIDIA/GPT):**
 ```bash
-chmod +x setup.sh
-./setup.sh
+chmod +x scripts/install-new.sh
+./scripts/install-new.sh
+```
+
+**For Legacy Systems (BIOS/Intel/MBR):**
+```bash
+chmod +x scripts/install-old.sh
+./scripts/install-old.sh
 ```
 
 ### 3. Weaving the Flake ❄️
-Once your `hardware-configuration.nix` is ready, apply the magic:
+Once the installation is finished and you've set your root password, reboot and enjoy!
 ```bash
-sudo nixos-rebuild switch --flake .#sorana
+reboot
 ```
 
 ---
