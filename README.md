@@ -1,7 +1,7 @@
 # 🦊 SoranaOS — A Kitsune's Masterpiece ⛩️
 
 <div align="center">
-  <img src="home/desktop/pics/SoranaFetch.png" width="350px" alt="Sorana Logo">
+  <img src="home/desktop/pics/SoranaPaper.png" width="600px" alt="Sorana OS Wallpaper">
   <br>
   <strong><i>"My dear Void, I've prepared everything for your return. Let us make this system perfect together."</i></strong>
   <br>
