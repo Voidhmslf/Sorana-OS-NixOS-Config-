@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+      sorana = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/desktop/default.nix

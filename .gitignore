@@ -1,0 +1,15 @@
+# NixOS / Nix artifacts
+result
+.direnv/
+.node-hist
+node_modules/
+
+# EasyEDA binaries (too large for git)
+home/programs/easyeda/easyeda-linux-x64/
+home/programs/easyeda/*.zip
+home/programs/easyeda/*.tar.gz
+
+# Temp files
+*.tmp
+*.log
+/home/void/.gemini/tmp/

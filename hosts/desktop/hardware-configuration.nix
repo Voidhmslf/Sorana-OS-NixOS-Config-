@@ -47,44 +47,12 @@
     [ { device = "/dev/disk/by-uuid/0753d187-5cac-435f-aee6-c923379e0689"; }
     ];
 
-  # --- Sorana's NVIDIA & AMD Hybrid Graphics Setup ---
-
-  # 1. Enable Graphics Drivers
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-
-  # 2. Set special kernel parameters for NVIDIA
-  # This makes sure the driver is loaded correctly for Wayland (Hyprland)
-  # We also disable signature enforcement as a workaround.
-  boot.kernelParams = [ "nvidia-drm.modeset=1" "module.sig_enforce=0" ];
-
-  # 3. Configure NVIDIA drivers
-  services.xserver.videoDrivers = [ "nvidia" ]; # Use the proprietary driver
-  hardware.nvidia = {
-    # Use the stable driver package
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-    # Enable modesetting, crucial for Wayland
-    modesetting.enable = true;
-
-    # Power management can be handled by other tools, so we let it be.
-    powerManagement.enable = false;
-
-    # NVIDIA open source drivers are not used.
-    open = false;
-
-    # Install the nvidia-settings utility
-    nvidiaSettings = true;
-
-    # Enable PRIME Render Offload
-    # This lets the powerful NVIDIA GPU handle demanding tasks (and external monitors)
-    prime = {
-      amdgpuBusId = "PCI:6:0:0"; # Your AMD integrated GPU
-      nvidiaBusId = "PCI:1:0:0"; # Your NVIDIA discrete GPU
-      sync.enable = true;
-    };
-  };
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Специфичные для этого устройства адреса видеокарт
+  hardware.nvidia.prime = {
+    amdgpuBusId = "PCI:6:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
 }

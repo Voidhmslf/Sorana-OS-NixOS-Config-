@@ -14,4 +14,13 @@
     # Читаем CSS стили как простой текст.
     style = builtins.readFile ./style.css;
   };
+
+  # Пробрасываем иконки в ~/.config/waybar/icons
+  home.file.".config/waybar/icons".source = ./icons;
+
+  # Добавляем скрипт переключения раскладки
+  home.file.".config/waybar/scripts/switch_layout.sh" = {
+    source = ./switch_layout.sh;
+    executable = true;
+  };
 }

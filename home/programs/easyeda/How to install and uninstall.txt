@@ -1,0 +1,36 @@
+
+Install:
+
+1.Decompress the zip file you downloaded.  
+Excute the Terminal at the decompressed folder, 
+normally hotkey CTRL+ALT+T(May be you need to use command 'cd' to change the terminal patch to decompress directory). 
+
+2.Input a command at the terminal
+
+sudo bash install.sh
+
+or
+
+sudo sh install.sh
+
+3.Enter, and input the login password of your operation system(will not show the charater on the screen), enter.
+
+4.Waiting for installing finish. After finish, you can find it on your system dashboard or start dock
+
+
+Uninstall：
+
+1.Input a command at the terminal
+
+sudo bash uninstall.sh
+
+or
+
+sudo bash uninstall.sh
+
+2.Enter, and input the login password of your operation system, enter.
+
+3.Waiting for uninstalling finish.
+
+
+

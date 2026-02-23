@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./easyeda
+  ];
+
   home.packages = with pkgs; [
     # Твои браузеры
     floorp-bin
@@ -9,6 +13,13 @@
     vscode
     neovim
     gemini-cli
+    material-design-icons
+    
+    # Сетевые инструменты
+    networkmanager         # Вернет nmtui
+    networkmanagerapplet   # Графический апплет для трея (nm-applet)
+    brightnessctl          # Утилита для управления яркостью
+    
     # И любые другие программы, которые ты захочешь добавить в будущем
     telegram-desktop
     spotify
