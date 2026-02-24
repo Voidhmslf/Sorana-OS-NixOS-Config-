@@ -3,11 +3,11 @@
 {
   imports = [
     ./easyeda
+    ./floorp.nix
   ];
 
   home.packages = with pkgs; [
     # Твои браузеры
-    floorp-bin
     
     # Твои рабочие инструменты
     vscode

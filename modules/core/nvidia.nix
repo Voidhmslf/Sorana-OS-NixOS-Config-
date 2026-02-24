@@ -16,7 +16,7 @@
     # Режимы работы и настройки для Wayland
     modesetting.enable = true;
     powerManagement.enable = true; # Важно для ноутбуков и выхода из сна
-    powerManagement.finegrained = true; # Экономия энергии для Offload
+    powerManagement.finegrained = false; # Отключаем для стабильности HDMI
     open = false; # Используем проприетарный драйвер (стабильнее для RTX 3060)
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
