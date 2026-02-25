@@ -80,5 +80,6 @@
     libva-utils
     vdpauinfo
     blueman
+    overskride
   ];
 }
