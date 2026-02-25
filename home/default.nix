@@ -17,7 +17,17 @@
 
     # --- Утилиты для Thunar (дополнения) ---
     tumbler # Генерация превью
+
+    # --- Скриншоты и Буфер обмена ---
+    grim
+    slurp
+    swappy
+    wl-clipboard
+    cliphist
   ];
+
+  # Включаем службу истории буфера обмена
+  services.cliphist.enable = true;
 
   # Импортируем остальные части конфигурации
   imports = [
