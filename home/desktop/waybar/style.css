@@ -17,8 +17,8 @@
 #waybar {
     background: @background;
     color: @foreground;
-    border-radius: 10px; 
-    margin: 4px 6px 6px 6px; /* Сверху 4, по бокам и снизу 6 */
+    border-radius: 0 0 10px 10px; /* Скругления только снизу */
+    margin: 0; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.45); 
 }
 

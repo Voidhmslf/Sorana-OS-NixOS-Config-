@@ -3,6 +3,10 @@
     "position": "top",
     "height": 30,
     "spacing": 10,
+    "margin-top": 0,
+    "margin-left": 6,
+    "margin-right": 6,
+    "margin-bottom": 6,
 
     "modules-left": ["hyprland/language", "hyprland/workspaces"],
     "modules-center": ["custom/launcher"],
