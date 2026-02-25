@@ -17,6 +17,8 @@
     material-design-icons
     
     # Мультимедиа и скриншоты
+    grim                   # Базовый инструмент захвата (нужен для hyprshot)
+    slurp                  # Выбор области (нужен для hyprshot)
     hyprshot               # Удобный захват экрана для Hyprland
     swappy                 # Редактор скриншотов (стрелочки, текст, обрезка)
     wl-clipboard           # Работа с буфером обмена Wayland
