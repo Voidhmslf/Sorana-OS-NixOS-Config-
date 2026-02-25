@@ -205,6 +205,10 @@
 
   # Копируем конфиг hyprland
   xdg.configFile."hypr/hyprland.conf".source = ./desktop/hyprland/hyprland.conf;
+  xdg.configFile."hypr/scripts/clipboard.sh" = {
+    source = ./desktop/hyprland/clipboard.sh;
+    executable = true;
+  };
   xdg.configFile."swappy/config".source = ./desktop/hyprland/swappy.conf;
   xdg.configFile."fastfetch/config.jsonc".source = ./programs/fastfetch/config.jsonc;
   
