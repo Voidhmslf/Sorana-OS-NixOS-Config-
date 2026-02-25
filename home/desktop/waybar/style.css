@@ -26,7 +26,7 @@
     padding: 0;
 }
 
-#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery, #bluetooth, #network {
+#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery, #bluetooth {
     padding: 0 14px; /* Уменьшим внутренние отступы */
     margin: 2px 4px; /* Уменьшим внешние отступы модулей */
     background: rgba(0,0,0,0.15); 

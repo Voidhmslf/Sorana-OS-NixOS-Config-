@@ -6,7 +6,7 @@
 
     "modules-left": ["hyprland/language", "hyprland/workspaces"],
     "modules-center": ["custom/launcher"],
-    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "network", "clock", "battery"],
+    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "clock", "battery"],
 
     "hyprland/language": {
         "format": "󰌌 {}",
