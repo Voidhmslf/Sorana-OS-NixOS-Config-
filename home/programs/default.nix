@@ -16,6 +16,12 @@
     gemini-cli
     material-design-icons
     
+    # Мультимедиа и скриншоты
+    grim                   # Захват экрана
+    slurp                  # Выбор области
+    wl-clipboard           # Работа с буфером обмена Wayland
+    cliphist               # История буфера обмена (текст и фото)
+    
     # Сетевые инструменты
     networkmanager         # Вернет nmtui
     networkmanagerapplet   # Графический апплет для трея (nm-applet)
