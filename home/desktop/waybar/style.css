@@ -26,7 +26,7 @@
     padding: 0;
 }
 
-#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery {
+#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery, #bluetooth, #network {
     padding: 0 14px; /* Уменьшим внутренние отступы */
     margin: 2px 4px; /* Уменьшим внешние отступы модулей */
     background: rgba(0,0,0,0.15); 
@@ -71,7 +71,7 @@
     background-color: @selection;
 }
 
-#pulseaudio:hover, #backlight:hover, #network:hover, #clock:hover, #battery:hover {
+#pulseaudio:hover, #backlight:hover, #network:hover, #clock:hover, #battery:hover, #bluetooth:hover {
      background: @selection;
 }
 
