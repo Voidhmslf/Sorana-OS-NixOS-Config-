@@ -85,6 +85,24 @@ reboot
 
 ---
 
+## 🎨 Aesthetic Profile: Sorana's Embrace 🦊
+
+The system is wrapped in a custom, static color palette designed for deep focus, visual comfort, and a touch of kitsune magic.
+
+- **Theme:** *Sorana's Embrace* (Refined Velvet Edition)
+- **UI Style:** Deep, rounded, and monolithic. Every application, from the terminal to the code editor, sings in harmony.
+
+| Element | Color | Role |
+| :--- | :---: | :--- |
+| **Background** | `#1a1d36` | **Soft Midnight Indigo** — Velvet base for all windows. |
+| **Foreground** | `#e0d4d4` | **Ash Pink** — Primary text and delicate details. |
+| **Primary Accent** | `#00bfa5` | **Emerald** — Active workspaces, borders, and focus. |
+| **Urgent/Secondary** | `#ff8fab` | **Soft Pink** — Warnings, muted states, and errors. |
+| **Armor Layers** | `#090a14` | **Void Indigo** — Deep backgrounds for status bars and menus. |
+| **UI Highlights** | `#2a2d46` | **Indigo Shadow** — Inactive borders and selection layers. |
+
+---
+
 ## 🧪 EasyEDA Integration ⚡
 
 Due to licensing, binaries are not included. To use:

@@ -15,12 +15,8 @@
     swww # Управление обоями с плавными переходами
     fastfetch # Красивый вывод информации о системе
 
-    # --- Наш новый проводник ---
-    thunar # Сам файловый менеджер (теперь без префикса xfce)
-    thunar-archive-plugin # Работа с архивами
-    thunar-volman # Управление дисками и флешками
-    xfconf # Нужно для хранения настроек Thunar (теперь без префикса xfce)
-    gvfs # Нужно для работы корзины и монтирования дисков в Thunar
+    # --- Утилиты для Thunar (дополнения) ---
+    tumbler # Генерация превью
   ];
 
   # Импортируем остальные части конфигурации
@@ -43,9 +39,9 @@
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
-        bg = mkLiteral "rgba(6, 71, 60, 0.9)";
-        fg = mkLiteral "#eaf2f1";
-        accent = mkLiteral "#14faca";
+        bg = mkLiteral "rgba(26, 29, 54, 0.9)";
+        fg = mkLiteral "#e0d4d4";
+        accent = mkLiteral "#00bfa5";
         background-color = mkLiteral "transparent";
         text-color = mkLiteral "@fg";
       };
@@ -88,7 +84,7 @@
       };
 
       "element selected" = {
-        background-color = mkLiteral "rgba(20, 250, 202, 0.2)";
+        background-color = mkLiteral "rgba(0, 191, 165, 0.2)";
         text-color = mkLiteral "@accent";
       };
 
@@ -147,7 +143,7 @@
       
       # Выбираем случайную реплику
       selected_quote=''${quotes[$RANDOM % ''${#quotes[@]} + 1]}
-      echo -e "\n \e[1;34mSorana:\e[0m \e[1;36m$selected_quote\e[0m\n"
+      echo -e "\n \e[1;32mSorana:\e[0m \e[1;36m$selected_quote\e[0m\n"
     '';
   };
 
@@ -174,20 +170,20 @@
 
     # Магия изумрудных акцентов через CSS
     gtk3.extraCss = ''
-      @define-color accent_color #14faca;
+      @define-color accent_color #00bfa5;
       @define-color selected_bg_color @accent_color;
-      @define-color selected_fg_color #06473c;
+      @define-color selected_fg_color #1a1d36;
       
       /* Подсветка выделенных элементов в Thunar и других GTK3 приложениях */
       .view:selected, .view:selected:focus,
       treeview.view:selected, treeview.view:selected:focus {
         background-color: @accent_color;
-        color: #06473c;
+        color: #1a1d36;
       }
       
       /* Стилизация полос прокрутки под изумруд */
       scrollbar slider {
-        background-color: rgba(20, 250, 202, 0.3);
+        background-color: rgba(0, 191, 165, 0.3);
         border-radius: 10px;
       }
       scrollbar slider:hover {
@@ -201,9 +197,9 @@
     '';
     
     gtk4.extraCss = ''
-      @define-color accent_color #14faca;
+      @define-color accent_color #00bfa5;
       @define-color selected_bg_color @accent_color;
-      @define-color selected_fg_color #06473c;
+      @define-color selected_fg_color #1a1d36;
     '';
   };
 

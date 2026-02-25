@@ -1,10 +1,10 @@
 /* Sorana's Emerald Rounded Waybar Style */
 
-@define-color background rgba(6, 71, 60, 0.85); /* Глубокий полупрозрачный изумруд */
-@define-color foreground #eaf2f1; /* Светлый мятный для текста */
-@define-color accent #14faca;     /* Яркая бирюза для акцентов */
-@define-color urgent #ff8fab;     /* Нежный розовый для уведомлений */
-@define-color selection rgba(20, 250, 202, 0.2); /* Прозрачная бирюза для выделения */
+@define-color background rgba(26, 29, 54, 0.85); /* Мягкий полуночный индиго */
+@define-color foreground #e0d4d4; /* Светлый пепельно-розовый для текста */
+@define-color accent #00bfa5;     /* Изумруд для акцентов */
+@define-color urgent #ff8fab;     /* Мягкий розовый для уведомлений */
+@define-color selection rgba(0, 191, 165, 0.2); /* Полупрозрачный изумруд для выделения */
 
 * {
     border: none;
@@ -26,7 +26,7 @@
     padding: 0;
 }
 
-#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language {
+#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery {
     padding: 0 14px; /* Уменьшим внутренние отступы */
     margin: 2px 4px; /* Уменьшим внешние отступы модулей */
     background: rgba(0,0,0,0.15); 
@@ -71,13 +71,33 @@
     background-color: @selection;
 }
 
-#pulseaudio:hover, #backlight:hover, #network:hover, #clock:hover {
+#pulseaudio:hover, #backlight:hover, #network:hover, #clock:hover, #battery:hover {
      background: @selection;
 }
 
 #pulseaudio.muted {
     color: @urgent;
     background: rgba(255, 143, 171, 0.15);
+}
+
+#battery.warning {
+    color: @urgent;
+}
+
+#battery.critical:not(.charging) {
+    color: @urgent;
+    background: rgba(255, 143, 171, 0.3);
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+    }
 }
 
 #network.disconnected {

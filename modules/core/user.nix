@@ -7,7 +7,7 @@
   users.users.void = {
     isNormalUser = true;
     description = "Void";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "storage" "audio" "bluetooth" ];
     shell = pkgs.zsh;
   };
 }

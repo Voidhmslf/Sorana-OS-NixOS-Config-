@@ -3,14 +3,15 @@
 {
   imports = [
     ./easyeda
-    ./floorp.nix
+    ./firefox.nix
+    ./vscode.nix
+    ./zed.nix
   ];
 
   home.packages = with pkgs; [
     # Твои браузеры
     
     # Твои рабочие инструменты
-    vscode
     neovim
     gemini-cli
     material-design-icons

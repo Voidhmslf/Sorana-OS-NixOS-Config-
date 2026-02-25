@@ -13,8 +13,8 @@
   "display": {
     "separator": " ➜  ",
     "color": {
-      "keys": "blue",
-      "title": "cyan"
+      "keys": "magenta",
+      "title": "green"
     }
   },
   "modules": [
@@ -23,82 +23,82 @@
     {
       "type": "os",
       "key": "󱄅 OS",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "host",
       "key": "󰌢 Host",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "kernel",
       "key": "󰒔 Kernel",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "uptime",
       "key": "󱎫 Uptime",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "packages",
       "key": "󰏗 Packages",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "shell",
       "key": "󱆃 Shell",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "display",
       "key": "󰍹 Display",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "de",
       "key": "󰀻 DE",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "wm",
       "key": "󱂬 WM",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "terminal",
       "key": "󰆍 Terminal",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "cpu",
       "key": "󰻠 CPU",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "gpu",
       "key": "󰢮 GPU",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "memory",
       "key": "󰍛 Memory",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "disk",
       "key": "󰋊 Disk",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "battery",
       "key": "󰁹 Battery",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     {
       "type": "datetime",
       "key": "󰃭 Date",
-      "keyColor": "blue"
+      "keyColor": "magenta"
     },
     "break",
     "colors"

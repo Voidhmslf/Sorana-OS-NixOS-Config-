@@ -6,7 +6,7 @@
 
     "modules-left": ["hyprland/language", "hyprland/workspaces"],
     "modules-center": ["custom/launcher"],
-    "modules-right": ["tray", "backlight", "pulseaudio", "clock"],
+    "modules-right": ["tray", "backlight", "pulseaudio", "clock", "battery"],
 
     "hyprland/language": {
         "format": "󰌌 {}",
@@ -65,5 +65,17 @@
     "clock": {
         "format": "{:%H:%M | %a %d}",
         "tooltip-format": "<big>{:%Y %B}</big>\\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% 󰚥",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     }
 }

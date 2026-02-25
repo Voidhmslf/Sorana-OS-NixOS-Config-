@@ -32,6 +32,15 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Включаем сервисы для работы с внешними дисками и флешками
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.tumbler.enable = true; # Превью для файлов
+  security.polkit.enable = true;
+
+  # Поддержка различных файловых систем
+  boot.supportedFilesystems = [ "ntfs" "exfat" ];
+
   # Set your time zone.
   time.timeZone = "Asia/Almaty";
 

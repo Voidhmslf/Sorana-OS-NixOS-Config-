@@ -5,31 +5,15 @@ let
   wallpaper = ../desktop/pics/SoranaPaper.png;
   
   # Наша обновленная палитра для идеального контраста
-  emerald-dark = "#06473c";      # Глубокий темно-изумрудный для базы
-  lime-accent = "#a3e635";       # Сочный салатовый для активной вкладки
-  white-text = "#ffffff";        # Чисто белый текст для темного фона
-  black-text = "#000000";        # Черный текст для светлой вкладки
+  emerald-dark = "#1a1d36";      # Мягкий полуночный индиго для базы
+  lime-accent = "#00bfa5";       # Изумрудный акцент для активной вкладки
+  white-text = "#e0d4d4";        # Пепельно-розовый текст для темного фона
+  black-text = "#1a1d36";        # Темный индиго текст для светлой вкладки
 in
 {
-  # Заставляем Floorp искать конфиги в правильном месте
-  home.file.".floorp/void".source = config.lib.file.mkOutOfStoreSymlink "/home/void/.mozilla/firefox/void";
-  
-  # Обновляем profiles.ini, чтобы Floorp знал о нашем профиле
-  home.file.".floorp/profiles.ini".text = ''
-    [Profile0]
-    Name=void
-    IsRelative=1
-    Path=void
-    Default=1
-
-    [General]
-    StartWithLastProfile=1
-    Version=2
-  '';
-
   programs.firefox = {
     enable = true;
-    package = pkgs.floorp-bin;
+    package = pkgs.firefox; # Используем стандартный Firefox
     
     profiles.void = {
       id = 0;
@@ -38,19 +22,31 @@ in
 
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "floorp.browser.sidebar.enable" = true;
-        "floorp.browser.tabs.vertical" = true;
         "browser.startup.homepage" = "about:newtab";
         "browser.search.defaultenginename" = "DuckDuckGo";
         "browser.compactmode.show" = true;
         "browser.newtabpage.enabled" = true;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        
+        # Оптимизация для скорости и плавности (как мы делали во Floorp)
         "gfx.webrender.all" = true;
         "layers.acceleration.force-enabled" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.rdd-ffmpeg.enabled" = true;
+        "media.av1.enabled" = true;
+        "media.hardware-video-decoding.enabled" = true;
+        "media.navigator.mediadatadecoder_vpx_enabled" = true;
+        "media.ffvpx.enabled" = true;
+        "media.cache_size" = 524288;
+        "dom.ipc.processCount.webContent" = 8;
+        "network.http.http3.enable" = true;
+        "privacy.resistFingerprinting" = true; 
+        "privacy.trackingprotection.enabled" = true; 
+        "media.videocontrols.picture-in-picture.enabled" = true;
       };
 
-      # Магия интерфейса (userChrome.css)
+      # Магия интерфейса (userChrome.css) - адаптировано под Firefox
       userChrome = ''
         /* Твои обновленные цвета для идеальной читаемости */
         :root {
@@ -103,8 +99,8 @@ in
       '';
 
       userContent = ''
-        /* Усиленная магия для того, чтобы Сорана всегда была на фоне */
-        @-moz-document url-prefix("about:newtab"), url-prefix("about:home"), url("about:floorp-home") {
+        /* Усиленная магия для того, чтобы Сорана всегда была на фоне новой вкладки */
+        @-moz-document url-prefix("about:newtab"), url-prefix("about:home") {
           html, body, #root, .activity-stream {
             background-image: url("file://${wallpaper}") !important;
             background-size: cover !important;
@@ -113,7 +109,6 @@ in
             background-color: transparent !important;
           }
           
-          /* Убираем стандартные фоны Activity Stream, которые могут перекрывать нас */
           .outer-wrapper, .inner-wrapper {
             background-color: transparent !important;
           }
@@ -126,7 +121,6 @@ in
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
           }
           
-          /* Настройка текста и ссылок для лучшей видимости */
           .search-wrapper .search-label, .search-wrapper .search-info {
             color: ${white-text} !important;
           }

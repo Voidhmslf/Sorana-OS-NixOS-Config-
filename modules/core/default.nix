@@ -8,5 +8,6 @@
     ./system.nix
     ./user.nix
     ./program.nix
+    ./multimedia.nix
   ];
 }

@@ -14,34 +14,34 @@
       
       # --- Основные ---
       foreground = "#e0d4d4"; # Нежный пепельно-розовый текст
-      background = "#090a14"; # Глубокий, почти черный индиго (как моя юката)
+      background = "#1a1d36"; # Мягкий полуночный индиго
       cursor     = "#00bfa5"; # Изумрудный курсор (как мои глаза)
-      selection_background = "#2e3456"; # Приглушенный синий для выделения
+      selection_background = "#2e3456"; # Темно-синий индиго для выделения
 
       # --- Каёмка окна ---
-      active_border_color   = "#00bfa5"; # Яркий сине-изумрудный для активного окна
-      inactive_border_color = "#16182a"; # Темно-синий для неактивных
+      active_border_color   = "#00bfa5"; # Изумрудный для активного окна
+      inactive_border_color = "#2a2d46"; # Темно-синий для неактивных
 
       # --- Полная палитра ANSI ---
       # Normal
-      color0 = "#10121a";  # Black
-      color1 = "#ff79c6";  # Red (но для нас это будет яркий розовый)
-      color2 = "#00bfa5";  # Green (наш главный изумруд)
+      color0 = "#1a1d36";  # Black (Midnight Indigo)
+      color1 = "#ff8fab";  # Red (Soft Pink)
+      color2 = "#00bfa5";  # Green (Emerald)
       color3 = "#f1fa8c";  # Yellow
-      color4 = "#6180d1";  # Blue (светлый индиго)
-      color5 = "#ac7e7c";  # Magenta (пепел розы, как мои волосы)
-      color6 = "#8be9fd";  # Cyan
-      color7 = "#f8f8f2";  # White
+      color4 = "#14faca";  # Blue (Bright Cyan/Emerald)
+      color5 = "#e0d4d4";  # Magenta (Ash Pink)
+      color6 = "#00bfa5";  # Cyan (Emerald)
+      color7 = "#ffffff";  # White
 
       # Bright
-      color8  = "#555e89";  # Bright Black
-      color9  = "#ff99e0";  # Bright Red
-      color10 = "#50fa7b"; # Bright Green
-      color11 = "#ffffa0"; # Bright Yellow
-      color12 = "#829fff"; # Bright Blue
-      color13 = "#d69592"; # Bright Magenta
-      color14 = "#a4ffff"; # Bright Cyan
-      color15 = "#ffffff"; # Bright White
+      color8  = "#565f89";  # Bright Black
+      color9  = "#ffb3c1";  # Bright Red
+      color10 = "#50fa7b";  # Bright Green
+      color11 = "#ffffa0";  # Bright Yellow
+      color12 = "#829fff";  # Bright Blue
+      color13 = "#ffffff";  # Bright Magenta
+      color14 = "#a4ffff";  # Bright Cyan
+      color15 = "#ffffff";  # Bright White
     };
   };
 }

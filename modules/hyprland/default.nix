@@ -7,18 +7,18 @@
   services.displayManager.sddm.wayland.enable = true;
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = "1";
-    NVD_BACKEND = "direct";
+    
+    # Исправление для Firefox/Floorp на Wayland
+    MOZ_ENABLE_WAYLAND = "1";
+    EGL_PLATFORM = "wayland";
   };
 
   environment.systemPackages = with pkgs; [
     kitty
-    floorp-bin
     vscode
+    zed-editor
     neovim
     spotify
     gemini-cli
