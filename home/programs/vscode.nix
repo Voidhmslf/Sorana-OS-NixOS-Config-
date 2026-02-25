@@ -19,7 +19,7 @@
         "tab.activeBackground" = "#1a1d36";
         "tab.activeForeground" = "#00bfa5";
         "tab.inactiveBackground" = "#16182a";
-        "tab.inactiveForeground" = "#ac7e7c";
+        "tab.inactiveForeground" = "#565f89";
         
         # Статусбар (наш изумрудный акцент)
         "statusBar.background" = "#00bfa5";

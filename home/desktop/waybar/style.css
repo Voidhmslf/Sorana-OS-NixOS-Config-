@@ -46,7 +46,7 @@
 #workspaces button.active {
     color: @accent;
     opacity: 1.0;
-    background: rgba(20, 250, 202, 0.15);
+    background: rgba(0, 191, 165, 0.15);
     padding: 0 10px;
 }
 
