@@ -37,8 +37,7 @@
   services.udisks2.enable = true;
   services.tumbler.enable = true; # Превью для файлов
   security.polkit.enable = true;
-  programs.gpaste.enable = true;
-
+  
   # Поддержка различных файловых систем
   boot.supportedFilesystems = [ "ntfs" "exfat" ];
 
