@@ -205,6 +205,7 @@
 
   # Копируем конфиг hyprland
   xdg.configFile."hypr/hyprland.conf".source = ./desktop/hyprland/hyprland.conf;
+  xdg.configFile."swappy/config".source = ./desktop/hyprland/swappy.conf;
   xdg.configFile."fastfetch/config.jsonc".source = ./programs/fastfetch/config.jsonc;
   
   # Пробрасываем ассеты по стабильным путям
