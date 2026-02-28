@@ -10,7 +10,13 @@
 
     "modules-left": ["hyprland/language", "hyprland/workspaces"],
     "modules-center": ["custom/launcher"],
-    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "clock", "battery"],
+    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "clock", "battery", "custom/power"],
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "/home/void/.config/wlogout/wlogout.sh"
+    },
 
     "hyprland/language": {
         "format": "󰌌 {}",

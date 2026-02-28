@@ -1,0 +1,49 @@
+/* 🦊 SoranaOS - Wlogout HYPR Ritual 💠 (Exact Twin of Waybar Style) */
+
+* {
+    background-image: none;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+}
+
+window {
+    background-color: rgba(9, 10, 20, 0.85);
+}
+
+button {
+    color: #e0d4d4;
+    background-color: #1a1d36;
+    outline-style: none;
+    border: 2px solid #2a2d46;
+    border-radius: 20px;
+    margin: 350px 10px; 
+    min-width: 180px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+}
+
+button:focus, button:hover {
+    background-color: rgba(0, 191, 165, 0.1); 
+    border: 2px solid #00bfa5; 
+    color: #00bfa5;
+    background-size: 45%; 
+}
+
+button label {
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+}
+
+button:focus label, button:hover label {
+    opacity: 1;
+    margin-top: 100px;
+}
+
+#lock { background-image: image(url("/home/void/.config/wlogout/icons/lock.svg")); }
+#logout { background-image: image(url("/home/void/.config/wlogout/icons/logout.svg")); }
+#suspend { background-image: image(url("/home/void/.config/wlogout/icons/suspend.svg")); }
+#hibernate { background-image: image(url("/home/void/.config/wlogout/icons/hibernate.svg")); }
+#shutdown { background-image: image(url("/home/void/.config/wlogout/icons/shutdown.svg")); }
+#reboot { background-image: image(url("/home/void/.config/wlogout/icons/reboot.svg")); }

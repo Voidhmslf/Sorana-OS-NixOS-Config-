@@ -26,11 +26,21 @@
     padding: 0;
 }
 
-#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery, #bluetooth {
+#workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #battery, #bluetooth, #custom-power {
     padding: 0 14px; /* Уменьшим внутренние отступы */
     margin: 2px 4px; /* Уменьшим внешние отступы модулей */
     background: rgba(0,0,0,0.15); 
     transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.68); 
+}
+
+#custom-power {
+    color: @urgent;
+    font-size: 18px;
+}
+
+#custom-power:hover {
+    background: @selection;
+    color: @accent;
 }
 
 #workspaces button {

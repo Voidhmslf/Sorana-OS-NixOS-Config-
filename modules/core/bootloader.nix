@@ -6,9 +6,11 @@
   boot.loader.grub.enable = false;
   boot.loader.refind = {
     enable = true;
-    maxGenerations = 5;
+    maxGenerations = 3;
     extraConfig = ''
       include themes/catppuccin/mocha.conf
+      timeout 15
+      default_selection 1
       dont_scan_dirs EFI/nixos, EFI/systemd, EFI/BOOT, EFI/Linux
       showtools reboot, shutdown, firmware
     '';
@@ -34,4 +36,15 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Параметры ядра для подавления ошибок ACPI и "тихой" загрузки
+  boot.kernelParams = [
+    "quiet"
+    "loglevel=2"
+    "systemd.show_status=false"
+    "rd.udev.log_level=2"
+    "rd.driver.pre-udev-show-status=false"
+    "vt.global_cursor_default=0"
+    "pci=noaer"
+  ];
 }

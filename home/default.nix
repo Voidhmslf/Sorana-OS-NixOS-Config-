@@ -24,6 +24,8 @@
     swappy
     wl-clipboard
     cliphist
+    wlogout # Красивое полноэкранное меню питания
+    hyprlock # Блокировщик экрана для кнопки Lock
   ];
 
   # Включаем службу истории буфера обмена
@@ -44,64 +46,7 @@
       rofi-calc
       rofi-emoji
     ];
-    # Изумрудная тема, встроенная прямо в конфиг
-    theme = let
-      inherit (config.lib.formats.rasi) mkLiteral;
-    in {
-      "*" = {
-        bg = mkLiteral "rgba(26, 29, 54, 0.9)";
-        fg = mkLiteral "#e0d4d4";
-        accent = mkLiteral "#00bfa5";
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@fg";
-      };
-
-      "window" = {
-        width = mkLiteral "600px";
-        border = mkLiteral "2px";
-        border-radius = mkLiteral "18px";
-        border-color = mkLiteral "@accent";
-        background-color = mkLiteral "@bg";
-      };
-
-      "mainbox" = {
-        padding = mkLiteral "12px";
-      };
-
-      "inputbar" = {
-        children = map mkLiteral [ "prompt" "entry" ];
-        padding = mkLiteral "8px";
-        border-radius = mkLiteral "12px";
-        background-color = mkLiteral "rgba(0, 0, 0, 0.2)";
-        margin = mkLiteral "0 0 10px 0";
-      };
-
-      "prompt" = {
-        padding = mkLiteral "0 10px 0 0";
-        text-color = mkLiteral "@accent";
-      };
-
-      "listview" = {
-        columns = 1;
-        lines = 8;
-        fixed-height = true;
-        scrollbar = false;
-      };
-
-      "element" = {
-        padding = mkLiteral "8px";
-        border-radius = mkLiteral "12px";
-      };
-
-      "element selected" = {
-        background-color = mkLiteral "rgba(0, 191, 165, 0.2)";
-        text-color = mkLiteral "@accent";
-      };
-
-      "element-text" = {
-        vertical-align = mkLiteral "0.5";
-      };
-    };
+    theme = "~/.config/rofi/style-5.rasi";
     extraConfig = {
       modi = "drun,run";
       show-icons = true;
@@ -161,8 +106,8 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
+    package = pkgs.graphite-cursors;
+    name = "graphite-dark";
     size = 24;
   };
 
@@ -215,9 +160,30 @@
 
   # Копируем конфиг hyprland
   xdg.configFile."hypr/hyprland.conf".source = ./desktop/hyprland/hyprland.conf;
+  xdg.configFile."hypr/hyprlock.conf".source = ./desktop/hyprland/hyprlock.conf;
   xdg.configFile."fastfetch/config.jsonc".source = ./programs/fastfetch/config.jsonc;
   
   # Пробрасываем ассеты по стабильным путям
   home.file.".config/swww/wallpaper.png".source = ./desktop/pics/SoranaPaper.png;
   home.file.".config/fastfetch/logo.png".source = ./desktop/pics/SoranaFetch.png;
+
+  # Меню питания Sorana OS
+  xdg.configFile."rofi/powermenu.sh".source = ./desktop/rofi/powermenu.sh;
+  xdg.configFile."rofi/powermenu.rasi".source = ./desktop/rofi/powermenu.rasi;
+  xdg.configFile."rofi/style-5.rasi".source = ./desktop/rofi/style-5.rasi;
+  
+  # Новое полноэкранное меню wlogout
+  xdg.configFile."wlogout/layout".source = ./desktop/wlogout/layout;
+  xdg.configFile."wlogout/style.css".source = ./desktop/wlogout/style.css;
+  xdg.configFile."wlogout/style-hypr.css".source = ./desktop/wlogout/style-hypr.css;
+  xdg.configFile."wlogout/wlogout.sh" = {
+    source = ./desktop/wlogout/wlogout.sh;
+    executable = true;
+  };
+  xdg.configFile."wlogout/wlogout-hypr.sh" = {
+    source = ./desktop/wlogout/wlogout-hypr.sh;
+    executable = true;
+  };
+  xdg.configFile."wlogout/icons".source = ./desktop/wlogout/icons;
+  xdg.configFile."wlogout/icons-hypr".source = ./desktop/wlogout/icons-hypr;
 }

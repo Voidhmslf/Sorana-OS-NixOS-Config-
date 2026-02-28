@@ -41,6 +41,33 @@
   # Поддержка различных файловых систем
   boot.supportedFilesystems = [ "ntfs" "exfat" ];
 
+  # Подавление спама ядра в TTY (оставляем только критические ошибки)
+  boot.kernel.sysctl = {
+    "kernel.printk" = "2 2 2 2";
+  };
+
+  # Настройка цветов консоли (TTY) для Ly и общего вида
+  console = {
+    colors = [
+      "1a1d36" # 0: background (глубокий индиго)
+      "ff8fab" # 1: red (розовый)
+      "00bfa5" # 2: green (изумруд)
+      "f0c674" # 3: yellow
+      "81a2be" # 4: blue
+      "b294bb" # 5: magenta
+      "8abeb7" # 6: cyan
+      "e0d4d4" # 7: white (пепельно-розовый текст)
+      "969896" # 8: bright black
+      "ff8fab" # 9: bright red
+      "00bfa5" # 10: bright green
+      "f0c674" # 11: bright yellow
+      "81a2be" # 12: bright blue
+      "b294bb" # 13: bright magenta
+      "8abeb7" # 14: bright cyan
+      "ffffff" # 15: bright white
+    ];
+  };
+
   # Set your time zone.
   time.timeZone = "Asia/Almaty";
 

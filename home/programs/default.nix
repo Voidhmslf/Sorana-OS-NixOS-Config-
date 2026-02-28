@@ -24,6 +24,7 @@
     # И любые другие программы, которые ты захочешь добавить в будущем
     telegram-desktop
     spotify
+    vesktop
   ];
   home.file.".gemini/prompt.md".source = ./gemini/GEMINI.md;
 }

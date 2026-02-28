@@ -1,0 +1,7 @@
+[
+    {
+        "label": "shutdown",
+        "action": "systemctl poweroff",
+        "text": "Shutdown"
+    }
+]

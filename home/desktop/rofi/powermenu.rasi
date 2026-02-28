@@ -1,0 +1,69 @@
+/**
+ * Тема для меню питания Sorana OS
+ **/
+
+* {
+    /* Цвета из Waybar */
+    bg: rgba(26, 29, 54, 0.95);
+    fg: #e0d4d4;
+    accent: #00bfa5;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 300px;
+    border: 2px;
+    border-radius: 20px;
+    border-color: @accent;
+    background-color: @bg;
+    location: center;
+    anchor: center;
+    x-offset: 0;
+    y-offset: 0;
+}
+
+mainbox {
+    padding: 15px;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled: true;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    children: [ "prompt" ];
+}
+
+prompt {
+    enabled: true;
+    text-color: @accent;
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+listview {
+    columns: 1;
+    lines: 5;
+    spacing: 5px;
+    scrollbar: false;
+    fixed-height: true;
+}
+
+element {
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+element selected {
+    background-color: rgba(0, 191, 165, 0.2);
+    text-color: @accent;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 12";
+    vertical-align: 0.5;
+    cursor: inherit;
+}
