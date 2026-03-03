@@ -47,8 +47,7 @@ sorana-os/
 │   ├── 🐚 terminal/        # Kitty and Zsh settings
 │   └── 📦 programs/        # Applications & Tools (EasyEDA, Gemini)
 ├── 📂 scripts/             # Automated installation scrolls 📜
-│   ├── 💠 install-new.sh   # For UEFI/GPT/NVIDIA/rEFInd
-│   └── 🍃 install-old.sh   # For BIOS/MBR/Legacy systems
+│   └── 💠 install.sh       # The Universal Ritual (UEFI/BIOS/NVIDIA detection)
 └── 🚀 setup.sh             # Main setup helper for existing systems
 ```
 
@@ -63,18 +62,11 @@ cd ~/sorana-os
 ```
 
 ### 2. Invoke the Installation Spirit 🦊
-Depending on your hardware, choose your ritual:
+Our smart ritual will automatically detect your hardware (UEFI/BIOS, NVIDIA/Intel) and prepare the system accordingly:
 
-**For Modern Systems (UEFI/NVIDIA/GPT):**
 ```bash
-chmod +x scripts/install-new.sh
-./scripts/install-new.sh
-```
-
-**For Legacy Systems (BIOS/Intel/MBR):**
-```bash
-chmod +x scripts/install-old.sh
-./scripts/install-old.sh
+chmod +x scripts/install.sh
+./scripts/install.sh
 ```
 
 ### 3. Weaving the Flake ❄️
