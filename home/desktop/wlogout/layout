@@ -1,36 +1,44 @@
+[
 {
     "label": "lock",
     "action": "hyprlock",
     "text": "Lock",
-    "keybind": "l"
-}
+    "keybind": "l",
+    "icon": "/home/void/.config/wlogout/icons/lock.svg"
+},
 {
     "label": "logout",
     "action": "hyprctl dispatch exit",
     "text": "Logout",
-    "keybind": "e"
-}
+    "keybind": "e",
+    "icon": "/home/void/.config/wlogout/icons/logout.svg"
+},
 {
     "label": "suspend",
     "action": "systemctl suspend",
     "text": "Suspend",
-    "keybind": "u"
-}
+    "keybind": "u",
+    "icon": "/home/void/.config/wlogout/icons/suspend.svg"
+},
 {
     "label": "hibernate",
     "action": "systemctl hibernate",
     "text": "Hibernate",
-    "keybind": "h"
-}
+    "keybind": "h",
+    "icon": "/home/void/.config/wlogout/icons/hibernate.svg"
+},
 {
     "label": "shutdown",
     "action": "systemctl poweroff",
     "text": "Shutdown",
-    "keybind": "s"
-}
+    "keybind": "s",
+    "icon": "/home/void/.config/wlogout/icons/shutdown.svg"
+},
 {
     "label": "reboot",
     "action": "systemctl reboot",
     "text": "Reboot",
-    "keybind": "r"
+    "keybind": "r",
+    "icon": "/home/void/.config/wlogout/icons/reboot.svg"
 }
+]

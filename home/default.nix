@@ -24,6 +24,8 @@
     swappy
     wl-clipboard
     cliphist
+    playerctl # Управление музыкой для hyprlock и кнопок
+    xset # Для проверки состояния Caps Lock
     wlogout # Красивое полноэкранное меню питания
     hyprlock # Блокировщик экрана для кнопки Lock
   ];
@@ -165,7 +167,32 @@
   
   # Пробрасываем ассеты по стабильным путям
   home.file.".config/swww/wallpaper.png".source = ./desktop/pics/SoranaPaper.png;
+  home.file.".config/swww/homeidle.png".source = ./desktop/pics/HomeIdle.png;
   home.file.".config/fastfetch/logo.png".source = ./desktop/pics/SoranaFetch.png;
+  
+  # Скрипт для получения музыки (для hyprlock)
+  home.file.".local/bin/get_music.sh" = {
+    executable = true;
+    text = ''
+      #!/bin/bash
+      # Используем абсолютный путь к playerctl из nix-store
+      PLAYERCTL="${pkgs.playerctl}/bin/playerctl"
+      
+      status=$($PLAYERCTL status 2>/dev/null)
+      
+      if [ "$status" = "Playing" ] || [ "$status" = "Paused" ]; then
+          # Пытаемся получить метаданные
+          info=$($PLAYERCTL metadata --format ' {{title}} - {{artist}}' 2>/dev/null)
+          if [ -z "$info" ]; then
+              echo "Sorana OS 🦊"
+          else
+              echo "$info"
+          fi
+      else
+          echo "Sorana OS 🦊"
+      fi
+    '';
+  };
 
   # Меню питания Sorana OS
   xdg.configFile."rofi/powermenu.sh".source = ./desktop/rofi/powermenu.sh;

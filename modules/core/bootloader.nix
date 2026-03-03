@@ -1,43 +1,99 @@
 { pkgs, ... }:
 
 {
-  # Use the rEFInd EFI boot loader.
+  # Используем GRUB 2 в качестве загрузчика
   boot.loader.systemd-boot.enable = false;
-  boot.loader.grub.enable = false;
-  boot.loader.refind = {
+  boot.loader.grub = {
     enable = true;
-    maxGenerations = 3;
+    devices = [ "nodev" ];
+    efiSupport = true;
+    useOSProber = true;
+    
+    # Темы Minegrub
+    theme = let
+      # Тема "Выбор миров" (второе меню)
+      world-sel-src = pkgs.fetchFromGitHub {
+        owner = "Lxtharia";
+        repo = "minegrub-world-sel-theme";
+        rev = "main";
+        sha256 = "1vicgjv05wk6m9yc51kr9akngybdknw5jq1dx75zvl8hlkhly6c0";
+      };
+    in pkgs.stdenv.mkDerivation {
+      name = "minegrub-world-selection";
+      src = world-sel-src;
+      installPhase = ''
+        mkdir -p $out
+        cp -r minegrub-world-selection/* $out/
+      '';
+    };
+
+    # Логика двойного меню
     extraConfig = ''
-      include themes/catppuccin/mocha.conf
-      timeout 15
-      default_selection 1
-      dont_scan_dirs EFI/nixos, EFI/systemd, EFI/BOOT, EFI/Linux
-      showtools reboot, shutdown, firmware
+      set config_file=mainmenu.cfg
+      if [ -z "$chosen" ] ; then
+        if [ -n "$config_file" ] ; then
+          configfile $prefix/$config_file
+        fi
+      fi
     '';
+
+    # Дополнительные файлы для главного меню
+    extraFiles = let
+      # Тема "Главное меню" (первое меню)
+      main-menu-src = pkgs.fetchFromGitHub {
+        owner = "Lxtharia";
+        repo = "minegrub-theme";
+        rev = "main";
+        sha256 = "1lv9wsam2lccidyyr4alm7d10jycsgi26bgijxnjdzjci8041y8s";
+      };
+      
+      minegrub-main-theme = pkgs.stdenv.mkDerivation {
+        name = "minegrub-main-theme";
+        src = main-menu-src;
+        installPhase = ''
+          mkdir -p $out
+          cp -r minegrub/* $out/
+        '';
+      };
+
+      mainmenu-cfg = pkgs.writeText "mainmenu.cfg" ''
+        # Loading the theme and fonts 
+        loadfont $prefix/themes/minegrub/Minecraft30.pf2
+        loadfont $prefix/themes/minegrub/Monocraft22.pf2
+        insmod png
+        set theme=$prefix/themes/minegrub/theme.txt
+        export theme
+
+        set timeout_style=menu
+        set timeout=15
+
+        menuentry "              Singleplayer (NixOS)" {
+            configfile $prefix/grub.cfg 
+        }
+
+        menuentry "              Multiplayer (Network)" {
+            echo "I don't know how network boot works, but Sorana loves you! 🦊"
+            sleep 3
+        } 
+
+        menuentry "           Uefi Setting Realm" $menuentry_id_option 'uefi-firmware' {
+            fwsetup
+        }
+      '';
+    in {
+      "mainmenu.cfg" = mainmenu-cfg;
+      "themes/minegrub" = minegrub-main-theme;
+    };
   };
+
+  boot.loader.timeout = 15;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  # Скрипт для автоматической установки темы Catppuccin для rEFInd
-  system.activationScripts.refind-theme = {
-    text = let
-      catppuccin-refind = pkgs.fetchFromGitHub {
-        owner = "catppuccin";
-        repo = "refind";
-        rev = "e92ad6f4673e30fbc79e69c9cbe3780fb9a3f05f";
-        sha256 = "1z252rfzsx8k8pkygbknicdrl9z2j5ibkd9qx1m7r9w4yn98r3yz";
-      };
-    in ''
-      mkdir -p /boot/EFI/refind/themes/catppuccin
-      cp -rf ${catppuccin-refind}/mocha.conf /boot/EFI/refind/themes/catppuccin/mocha.conf
-      cp -rf ${catppuccin-refind}/assets /boot/EFI/refind/themes/catppuccin/
-    '';
-  };
-
-  # Use latest kernel.
+  # Используем последнее ядро
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Параметры ядра для подавления ошибок ACPI и "тихой" загрузки
+  # Параметры ядра для тихой загрузки
   boot.kernelParams = [
     "quiet"
     "loglevel=2"

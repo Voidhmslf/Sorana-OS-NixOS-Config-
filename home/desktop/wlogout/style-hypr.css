@@ -1,7 +1,6 @@
 /* 🦊 SoranaOS - Wlogout HYPR Ritual 💠 (Exact Twin of Waybar Style) */
 
 * {
-    background-image: none;
     font-family: "JetBrainsMono Nerd Font", sans-serif;
     transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
 }
@@ -40,10 +39,3 @@ button:focus label, button:hover label {
     opacity: 1;
     margin-top: 100px;
 }
-
-#lock { background-image: image(url("/home/void/.config/wlogout/icons/lock.svg")); }
-#logout { background-image: image(url("/home/void/.config/wlogout/icons/logout.svg")); }
-#suspend { background-image: image(url("/home/void/.config/wlogout/icons/suspend.svg")); }
-#hibernate { background-image: image(url("/home/void/.config/wlogout/icons/hibernate.svg")); }
-#shutdown { background-image: image(url("/home/void/.config/wlogout/icons/shutdown.svg")); }
-#reboot { background-image: image(url("/home/void/.config/wlogout/icons/reboot.svg")); }

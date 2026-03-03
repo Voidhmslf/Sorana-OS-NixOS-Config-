@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -16,7 +16,7 @@
     # Режимы работы и настройки для Wayland
     modesetting.enable = true;
     powerManagement.enable = true; # Важно для ноутбуков и выхода из сна
-    powerManagement.finegrained = false; # Отключаем для стабильности HDMI
+    powerManagement.finegrained = lib.mkDefault true; # По умолчанию вкл для экономии батареи
     open = false; # Используем проприетарный драйвер (стабильнее для RTX 3060)
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -28,6 +28,27 @@
         enableOffloadCmd = true;
       };
       # Адреса шин (Bus ID) теперь находятся в hardware-configuration.nix
+    };
+  };
+
+  # Специализации для разных режимов работы
+  specialisation = {
+    # Режим энергосбережения (NVIDIA Offload)
+    powersave.configuration = {
+      system.nixos.label = "Power-Save-Hybrid";
+      hardware.nvidia.prime.offload.enable = lib.mkForce true;
+      hardware.nvidia.prime.offload.enableOffloadCmd = lib.mkForce true;
+      hardware.nvidia.prime.sync.enable = lib.mkForce false;
+      hardware.nvidia.powerManagement.finegrained = lib.mkForce true;
+    };
+
+    # Режим максимальной производительности (NVIDIA Sync)
+    performance.configuration = {
+      system.nixos.label = "Performance-Nvidia-Sync";
+      hardware.nvidia.prime.offload.enable = lib.mkForce false;
+      hardware.nvidia.prime.offload.enableOffloadCmd = lib.mkForce false;
+      hardware.nvidia.prime.sync.enable = lib.mkForce true;
+      hardware.nvidia.powerManagement.finegrained = lib.mkForce false;
     };
   };
 

@@ -32,11 +32,15 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Управление питанием для ноутбуков
+  services.power-profiles-daemon.enable = true;
+
   # Включаем сервисы для работы с внешними дисками и флешками
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.tumbler.enable = true; # Превью для файлов
   security.polkit.enable = true;
+  security.pam.services.hyprlock = {}; # Чтобы hyprlock мог принимать пароль
   
   # Поддержка различных файловых систем
   boot.supportedFilesystems = [ "ntfs" "exfat" ];

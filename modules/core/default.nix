@@ -10,5 +10,6 @@
     ./program.nix
     ./multimedia.nix
     ./displaymanager.nix
+    ./printing.nix
   ];
 }

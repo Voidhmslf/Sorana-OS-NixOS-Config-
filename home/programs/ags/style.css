@@ -1,0 +1,45 @@
+/* 🦊 SoranaOS - AGS Aesthetics 💠 */
+
+.powermenu-window {
+    background-color: rgba(9, 10, 20, 0.85); /* Void Indigo */
+}
+
+.powermenu-container {
+    margin: auto;
+    spacing: 20px;
+}
+
+.power-button {
+    background-color: #1a1d36;
+    border: 2px solid #2a2d46;
+    border-radius: 20px;
+    min-width: 160px;
+    min-height: 160px;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+}
+
+.power-button:hover {
+    background-color: rgba(0, 191, 165, 0.1); 
+    border: 2px solid #00bfa5; 
+}
+
+.power-button .icon {
+    font-size: 48px;
+    color: #e0d4d4; /* Ash Pink */
+}
+
+.power-button:hover .icon {
+    color: #00bfa5; /* Sorana Emerald */
+}
+
+.power-button .label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e0d4d4;
+    margin-top: 10px;
+}
+
+.power-button:hover .label {
+    color: #00bfa5;
+}

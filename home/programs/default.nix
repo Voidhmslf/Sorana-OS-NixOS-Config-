@@ -6,6 +6,7 @@
     ./firefox.nix
     ./vscode.nix
     ./zed.nix
+    ./vesktop.nix
   ];
 
   home.packages = with pkgs; [
@@ -15,6 +16,7 @@
     neovim
     gemini-cli
     material-design-icons
+    nodejs
     
     # Сетевые инструменты
     networkmanager         # Вернет nmtui
@@ -25,6 +27,11 @@
     telegram-desktop
     spotify
     vesktop
+
+    # Игровые инструменты для Battle.net
+    lutris
+    bottles
+    wineWow64Packages.staging
   ];
   home.file.".gemini/prompt.md".source = ./gemini/GEMINI.md;
 }
