@@ -53,10 +53,13 @@ git add -f hosts/desktop/hardware-configuration.nix
 echo -e "${CYAN}🦊 Sorana:${NC} Adapting the configuration to this machine's soul... ✨"
 
 # Toggle NVIDIA in modules/core/default.nix
-if [ "$HAS_NVIDIA" = true ]; then
+if [ "$HAS_NVIDIA" = true ] && [ "$IS_UEFI" = true ]; then
+    echo -e "${CYAN}🦊 Sorana:${NC} Enabling NVIDIA guardian... 🗡️"
     sed -i 's/^\s*#\s*.\/nvidia.nix/    .\/nvidia.nix/' modules/core/default.nix
 else
+    echo -e "${CYAN}🦊 Sorana:${NC} Disabling NVIDIA for this machine to avoid Bus ID errors... 💤"
     sed -i 's/^\s*.\/nvidia.nix/    # .\/nvidia.nix/' modules/core/default.nix
+    sed -i 's/^\s*#\s*#\s*.\/nvidia.nix/    # .\/nvidia.nix/' modules/core/default.nix # Clean double comments
 fi
 
 # Adjust Bootloader (Legacy BIOS needs special care)
