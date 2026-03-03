@@ -45,6 +45,10 @@ else
     nixos-generate-config --show-hardware-config > hosts/desktop/hardware-configuration.nix
 fi
 
+# IMPORTANT: Flakes need to see the file in git index!
+echo -e "${CYAN}🦊 Sorana:${NC} Introducing the hardware spirit to Git... 🔮"
+git add -f hosts/desktop/hardware-configuration.nix
+
 # 3. Dynamic Configuration Updates
 echo -e "${CYAN}🦊 Sorana:${NC} Adapting the configuration to this machine's soul... ✨"
 
