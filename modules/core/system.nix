@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   nix = {
@@ -34,6 +34,25 @@
 
   # Управление питанием для ноутбуков
   services.power-profiles-daemon.enable = true;
+
+  # Специализация для энергосбережения (отдельный пункт в GRUB)
+  specialisation.powersave.configuration = {
+    system.nixos.tags = [ "powersave" ]; # Метка в меню загрузки
+    
+    # При загрузке в этот режим - переключаем профиль в powersave
+    systemd.services.set-powersave-profile = {
+      description = "Set power-profiles-daemon to powersave on boot";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig.Type = "oneshot";
+      script = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set powersave";
+    };
+
+    # Для Niri мы создадим файл-флаг, чтобы конфиг понял, какой режим активен
+    environment.etc."sorana-profile".text = "powersave";
+  };
+
+  # По умолчанию создадим файл-флаг performance
+  environment.etc."sorana-profile".text = lib.mkDefault "performance";
 
   # Включаем сервисы для работы с внешними дисками и флешками
   services.gvfs.enable = true;

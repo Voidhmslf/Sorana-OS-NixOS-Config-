@@ -77,6 +77,9 @@
 
   environment.systemPackages = with pkgs; [
     ffmpeg-full
+    vlc
+    mpv
+    handbrake
     libva-utils
     vdpauinfo
     blueman
@@ -85,6 +88,8 @@
     qpwgraph
     easyeffects
     rnnoise-plugin
+    ocl-icd
+    libglvnd
   ];
 
   # Настройка фильтра шумоподавления для PipeWire

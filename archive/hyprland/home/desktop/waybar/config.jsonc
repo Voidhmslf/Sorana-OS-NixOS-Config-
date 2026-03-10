@@ -8,9 +8,25 @@
     "margin-right": 6,
     "margin-bottom": 6,
 
-    "modules-left": ["hyprland/language", "hyprland/workspaces"],
+    "modules-left": ["niri/language", "niri/workspaces"],
     "modules-center": ["custom/launcher"],
-    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "clock", "battery", "custom/power"],
+    "modules-right": ["tray", "backlight", "pulseaudio", "bluetooth", "clock", "battery", "custom/powerprofile", "custom/power"],
+
+    "custom/powerprofile": {
+        "exec": "powerprofilesctl get",
+        "interval": 2,
+        "format": "{}",
+        "format-icons": {
+            "performance": "⚡",
+            "balanced": "",
+            "powersave": "🔋"
+        },
+        "return-type": "",
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "Current profile: {}",
+        "on-click": "/home/void/sorana-os/home/desktop/waybar/switch_mode.sh"
+    },
 
     "custom/power": {
         "format": "⏻",
@@ -18,11 +34,11 @@
         "on-click": "/home/void/.config/wlogout/wlogout.sh"
     },
 
-    "hyprland/language": {
+    "niri/language": {
         "format": "󰌌 {}",
         "format-en": "EN",
         "format-ru": "RU",
-        "on-click": "~/.config/waybar/scripts/switch_layout.sh"
+        "on-click": "niri msg action switch-layout next"
     },
 
     "tray": {
@@ -30,12 +46,9 @@
         "spacing": 10
     },
 
-    "hyprland/workspaces": {
+    "niri/workspaces": {
         "format": "{name}",
-        "on-click": "activate",
-        "persistent-workspaces": {
-            "*": [1, 2, 3]
-        }
+        "on-click": "activate"
     },
 
     "custom/launcher": {

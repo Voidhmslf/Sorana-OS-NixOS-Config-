@@ -14,3 +14,4 @@ home/programs/easyeda/*.tar.gz
 *.tmp
 *.log
 /home/void/.gemini/tmp/
+home/programs/easyeda/easyeda-linux-x64/

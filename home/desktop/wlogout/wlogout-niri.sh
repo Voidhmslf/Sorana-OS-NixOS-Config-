@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 🦊 SoranaOS - Wlogout HYPR Ritual 💠
+# 🦊 SoranaOS - Wlogout Niri Ritual 💠
 
 if pgrep -x "wlogout" > /dev/null; then
     pkill -x "wlogout"
@@ -10,4 +10,4 @@ fi
 export GDK_BACKEND="wayland"
 export XDG_CONFIG_HOME="$HOME/.config"
 
-wlogout -b 6 -c 0 -r 0 -m 0 --layout "/home/void/.config/wlogout/layout" -C "/home/void/.config/wlogout/style-hypr.css"
+wlogout -b 6 -c 0 -r 0 -m 0 --layout "/home/void/.config/wlogout/layout" -C "/home/void/.config/wlogout/style-niri.css"

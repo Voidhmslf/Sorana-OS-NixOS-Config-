@@ -29,6 +29,6 @@ case $selected_option in
         systemctl hibernate
         ;;
     "$logout")
-        hyprctl dispatch exit
+        niri msg action quit
         ;;
 esac

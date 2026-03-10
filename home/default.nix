@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, noctalia-shell, ... }:
 
 {
   home.username = "void";
@@ -8,13 +8,11 @@
 
   # Пакеты, которые мы устанавливаем для пользователя
   home.packages = with pkgs; [
-    pavucontrol # Утилита для управления громкостью (для клика по виджету)
-    networkmanagerapplet # Утилита для управления Wi-Fi (для клика по виджету)
-
     # --- Утилиты для рабочего стола ---
     swww # Управление обоями с плавными переходами
     fastfetch # Красивый вывод информации о системе
-
+    networkmanagerapplet # Утилита для управления Wi-Fi
+    
     # --- Утилиты для Thunar (дополнения) ---
     tumbler # Генерация превью
 
@@ -33,11 +31,11 @@
   # Включаем службу истории буфера обмена
   services.cliphist.enable = true;
 
-  # Импортируем остальные части конфигурации
+  # Импортируем остальные части конфигурации (наши "кирпичики")
   imports = [
     ./programs/default.nix
     ./terminal/kitty.nix
-    ./desktop/waybar/default.nix # <-- Наш новый Waybar!
+    ./desktop/noctalia/default.nix # <-- Твой новый шелл здесь!
   ];
 
   # --- Конфигурация Rofi (меню приложений) ---
@@ -160,13 +158,18 @@
     '';
   };
 
-  # Копируем конфиг hyprland
-  xdg.configFile."hypr/hyprland.conf".source = ./desktop/hyprland/hyprland.conf;
-  xdg.configFile."hypr/hyprlock.conf".source = ./desktop/hyprland/hyprlock.conf;
+  # Копируем конфиги
+  xdg.configFile."niri/config.kdl".source = ./desktop/niri/config.kdl;
+  xdg.configFile."niri/powersave.kdl".source = ./desktop/niri/powersave.kdl;
+  
+  # Симлинк для профиля Niri (переопределит всё на 60Hz если мы в powersave)
+  xdg.configFile."niri/profile.kdl".source = if (config.specialisation != {}) then ./desktop/niri/powersave.kdl else ./desktop/niri/config.kdl; 
+  
   xdg.configFile."fastfetch/config.jsonc".source = ./programs/fastfetch/config.jsonc;
   
   # Пробрасываем ассеты по стабильным путям
   home.file.".config/swww/wallpaper.png".source = ./desktop/pics/SoranaPaper.png;
+  home.file."Pictures/Wallpapers/SoranaPaper.png".source = ./desktop/pics/SoranaPaper.png;
   home.file.".config/swww/homeidle.png".source = ./desktop/pics/HomeIdle.png;
   home.file.".config/fastfetch/logo.png".source = ./desktop/pics/SoranaFetch.png;
   
@@ -202,15 +205,15 @@
   # Новое полноэкранное меню wlogout
   xdg.configFile."wlogout/layout".source = ./desktop/wlogout/layout;
   xdg.configFile."wlogout/style.css".source = ./desktop/wlogout/style.css;
-  xdg.configFile."wlogout/style-hypr.css".source = ./desktop/wlogout/style-hypr.css;
+  xdg.configFile."wlogout/style-niri.css".source = ./desktop/wlogout/style-niri.css;
   xdg.configFile."wlogout/wlogout.sh" = {
     source = ./desktop/wlogout/wlogout.sh;
     executable = true;
   };
-  xdg.configFile."wlogout/wlogout-hypr.sh" = {
-    source = ./desktop/wlogout/wlogout-hypr.sh;
+  xdg.configFile."wlogout/wlogout-niri.sh" = {
+    source = ./desktop/wlogout/wlogout-niri.sh;
     executable = true;
   };
   xdg.configFile."wlogout/icons".source = ./desktop/wlogout/icons;
-  xdg.configFile."wlogout/icons-hypr".source = ./desktop/wlogout/icons-hypr;
+  xdg.configFile."wlogout/icons-niri".source = ./desktop/wlogout/icons-niri;
 }

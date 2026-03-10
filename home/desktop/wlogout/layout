@@ -8,7 +8,7 @@
 },
 {
     "label": "logout",
-    "action": "hyprctl dispatch exit",
+    "action": "niri msg action quit",
     "text": "Logout",
     "keybind": "e",
     "icon": "/home/void/.config/wlogout/icons/logout.svg"
