@@ -1,5 +1,5 @@
-// Sorana Powersave Mode 🔋
-// Этот конфиг переопределяет настройки для экономии энергии
+// Sorana OS - Powersave Profile 🔋
+include "base.kdl"
 
 output "eDP-1" {
     mode "1920x1080@60.001"

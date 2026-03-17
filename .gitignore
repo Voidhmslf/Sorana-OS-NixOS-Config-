@@ -3,7 +3,6 @@ result
 .direnv/
 .node-hist
 node_modules/
-hosts/desktop/hardware-configuration.nix
 
 # EasyEDA binaries (too large for git)
 home/programs/easyeda/easyeda-linux-x64/

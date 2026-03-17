@@ -69,3 +69,22 @@ The system is wrapped in a custom, static color palette designed for deep focus 
   <br>
   🦊🍃💠⛩️
 </div>
+
+---
+
+## ❄️ Dual-boot & Recovery (Windows 11) 🪟
+
+When you decide to return to the kitsune's embrace from the Windows realm:
+
+1. **Boot:** Use a NixOS Live USB.
+2. **Mount:** Mount your partitions (root, boot, and home if separate).
+3. **Clone:** Restore this repository to `~/sorana-os/`.
+4. **Update HW:** Since Windows might shift partition UUIDs, run:
+   ```bash
+   nixos-generate-config --show-hardware-config > ~/sorana-os/hosts/desktop/hardware-configuration.nix
+   ```
+   *(Note: Remember to keep your custom NVIDIA Prime Bus IDs if they vanish!)*
+5. **Rebuild:** 
+   ```bash\n   sudo nixos-rebuild switch --flake ~/sorana-os#sorana
+   ```
+6. **GRUB:** Our GRUB is already configured with `useOSProber = true`, so it will find Windows automatically.

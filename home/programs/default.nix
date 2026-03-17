@@ -129,6 +129,7 @@ in
     ./vscode.nix
     ./zed.nix
     ./vesktop.nix
+    ./teams.nix
   ];
 
   home.packages = with pkgs; [
@@ -149,7 +150,15 @@ in
     
     # И любые другие программы, которые ты захочешь добавить в будущем
     telegram-desktop
-    spotify
+    (pkgs.symlinkJoin {
+      name = "spotify";
+      paths = [ pkgs.spotify ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/spotify \
+          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland --disable-features=WaylandFractionalScaleV1"
+      '';
+    })
     vesktop
     kdePackages.kdenlive
     reaper

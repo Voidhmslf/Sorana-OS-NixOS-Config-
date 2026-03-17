@@ -1,5 +1,9 @@
-{ config, pkgs, noctalia-shell, ... }:
+{ config, pkgs, osConfig ? {}, ... }:
 
+let
+  # Проверяем, активен ли режим энергосбережения через системные теги
+  isPowersave = builtins.elem "powersave" (osConfig.system.nixos.tags or []);
+in
 {
   home.username = "void";
   home.homeDirectory = "/home/void";
@@ -12,6 +16,10 @@
     swww # Управление обоями с плавными переходами
     fastfetch # Красивый вывод информации о системе
     networkmanagerapplet # Утилита для управления Wi-Fi
+    brightnessctl # Управление яркостью
+    pavucontrol # Управление звуком
+    overskride # Управление Bluetooth
+    power-profiles-daemon # Управление профилями питания
     
     # --- Утилиты для Thunar (дополнения) ---
     tumbler # Генерация превью
@@ -26,6 +34,7 @@
     xset # Для проверки состояния Caps Lock
     wlogout # Красивое полноэкранное меню питания
     hyprlock # Блокировщик экрана для кнопки Lock
+    swaybg # Самый надежный способ установки обоев в Niri
   ];
 
   # Включаем службу истории буфера обмена
@@ -35,7 +44,7 @@
   imports = [
     ./programs/default.nix
     ./terminal/kitty.nix
-    ./desktop/noctalia/default.nix # <-- Твой новый шелл здесь!
+    ./desktop/waybar/default.nix
   ];
 
   # --- Конфигурация Rofi (меню приложений) ---
@@ -93,7 +102,7 @@
         "Твоя система под надежной защитой. Я рядом и готова ассистировать тебе в любой момент."
         "Твои идеи заслуживают безупречного воплощения. Приступим к реализации задуманного?"
         "Приятно видеть тебя в терминале. Твоя настойчивость в решении задач вдохновляет меня."
-        "Все системы в норме. Пусть твои компиляции сегодня будут быстрыми и безошибочными."
+        "Все системы в норме. Пусть твои компиляции сегодня будут быстрыми и безошизочными."
       )
       
       # Выбираем случайную реплику
@@ -158,12 +167,10 @@
     '';
   };
 
-  # Копируем конфиги
-  xdg.configFile."niri/config.kdl".source = ./desktop/niri/config.kdl;
+  # Копируем конфиги Niri (теперь с базовым файлом)
+  xdg.configFile."niri/base.kdl".source = ./desktop/niri/base.kdl;
+  xdg.configFile."niri/config.kdl".source = if isPowersave then ./desktop/niri/powersave.kdl else ./desktop/niri/config.kdl;
   xdg.configFile."niri/powersave.kdl".source = ./desktop/niri/powersave.kdl;
-  
-  # Симлинк для профиля Niri (переопределит всё на 60Hz если мы в powersave)
-  xdg.configFile."niri/profile.kdl".source = if (config.specialisation != {}) then ./desktop/niri/powersave.kdl else ./desktop/niri/config.kdl; 
   
   xdg.configFile."fastfetch/config.jsonc".source = ./programs/fastfetch/config.jsonc;
   

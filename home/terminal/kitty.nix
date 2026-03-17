@@ -7,7 +7,8 @@
     settings = {
       # === Эстетика Окна ===
       background_opacity = "0.85";
-      window_padding_width = 15;
+      window_padding_width = 0;
+      hide_window_decorations = "yes";
       confirm_os_window_close = 0;
 
       # === Цвета твоей Сораны (Изумрудная версия) ===

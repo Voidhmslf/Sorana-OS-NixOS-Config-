@@ -29,6 +29,8 @@
 
   programs.gamemode.enable = true;
 
+  programs.noisetorch.enable = true;
+
   # Включаем Thunar на системном уровне для лучшей интеграции
   programs.thunar = {
     enable = true;

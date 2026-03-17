@@ -1,0 +1,62 @@
+/* Sorana's Emerald Rounded Waybar Style - Indigo Recovery */
+
+@define-color background rgba(26, 29, 54, 0.9); /* Тот самый индиго */
+@define-color foreground #e0d4d4; 
+@define-color accent #00bfa5;     /* Изумрудные акценты */
+@define-color urgent #ff8fab;     
+@define-color selection rgba(0, 191, 165, 0.25); 
+
+* {
+    border: none;
+    border-radius: 10px;
+    font-family: "Symbols Nerd Font", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+#waybar {
+    background: @background;
+    color: @foreground;
+    border-radius: 12px; 
+    margin: 4px 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.modules-left, .modules-center, .modules-right {
+    padding: 0 4px;
+}
+
+#workspaces, #niri-workspaces, #pulseaudio, #backlight, #clock, #custom-launcher, #tray, #language, #niri-language, #battery, #bluetooth, #custom-power, #custom-powerprofile {
+    padding: 0 12px;
+    margin: 3px 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+#custom-launcher {
+    background-image: url("icons/foxie.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    min-width: 32px;
+    background-color: rgba(0, 191, 165, 0.1);
+}
+
+#workspaces button, #niri-workspaces button {
+    color: @foreground;
+    padding: 0 6px;
+}
+
+#workspaces button.active, #niri-workspaces button.active, #niri-workspaces button.focused {
+    color: @accent;
+    background: rgba(0, 191, 165, 0.15);
+}
+
+#custom-power {
+    color: @urgent;
+    font-size: 16px;
+}
+
+#pulseaudio:hover, #clock:hover, #battery:hover, #custom-launcher:hover {
+    background: @selection;
+}

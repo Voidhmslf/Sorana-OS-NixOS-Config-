@@ -69,6 +69,14 @@
     "kernel.printk" = "2 2 2 2";
   };
 
+  # Переменные окружения для чистого интерфейса и Wayland
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1"; # Нативный Wayland для Electron (Spotify, VSCode и т.д.)
+    GTK_USE_PORTAL = "1";
+    GTK_CSD = "0";        # Пытаемся отключить заголовки GTK
+    MOZ_ENABLE_WAYLAND = "1"; # Firefox в Wayland
+  };
+
   # Настройка цветов консоли (TTY) для Ly и общего вида
   console = {
     colors = [
