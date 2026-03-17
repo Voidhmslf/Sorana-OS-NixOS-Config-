@@ -150,6 +150,7 @@ in
     
     # И любые другие программы, которые ты захочешь добавить в будущем
     telegram-desktop
+    qbittorrent
     (pkgs.symlinkJoin {
       name = "spotify";
       paths = [ pkgs.spotify ];
